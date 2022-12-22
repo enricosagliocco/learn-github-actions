@@ -15,9 +15,12 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "This job's status is ${{ job.status }}."
-      - run: git add .
-      - run: git commit -m release-1.0.0
-      - run: git tag -a 1.0.0 -m 1.0.0
-      - run: git push --all
-      - run: git push origin --tags
+      - name: Gitflow
+        run: |
+          git config user.name "GitHub actions"
+          git config user.email noreply@github.com
+          git add .
+          git commit -m release-1.0.0
+          git tag -a 1.0.0 -m 1.0.0
+          git push --all
+          git push origin --tags
