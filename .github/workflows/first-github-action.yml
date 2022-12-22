@@ -19,15 +19,7 @@ jobs:
         run: |
           git config user.name "GitHub actions"
           git config user.email noreply@github.com
-          git checkout main
-
-          git add .
-          git commit -m release-1.0.0
-
-          git push --all
-              
-          git checkout main
+          
           git tag -a 1.0.0 -m 1.0.0
 
-          git push --all
           git push origin --tags
