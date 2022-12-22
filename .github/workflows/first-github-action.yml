@@ -23,17 +23,17 @@ jobs:
 
       - name: Initialize mandatory git config
         run: |
-			        git config user.name "GitHub actions"
-              git config user.email noreply@github.com
-			        git config --global credential.helper "/bin/sh ./.git_creds.sh"
-              echo '#!/bin/sh' > ./.git_creds.sh
-              echo "sleep 1" >> ./.git_creds.sh
-              echo "echo username=${{ GITHUB_ACTOR }}" >> ./.git_creds.sh
-              echo "echo password=${{ secrets.GITHUB_TOKEN }}" >> ./.git_creds.sh
-			        echo .git_creds.sh >> .git/info/exclude
-              echo pom.xml.versionsBackup >> .git/info/exclude
-              git config --global --add safe.directory '*'
-              git fetch --all
+          git config user.name "GitHub actions"
+          git config user.email noreply@github.com
+          git config --global credential.helper "/bin/sh ./.git_creds.sh"
+          echo '#!/bin/sh' > ./.git_creds.sh
+          echo "sleep 1" >> ./.git_creds.sh
+          echo "echo username=${{ GITHUB_ACTOR }}" >> ./.git_creds.sh
+          echo "echo password=${{ secrets.GITHUB_TOKEN }}" >> ./.git_creds.sh
+          echo .git_creds.sh >> .git/info/exclude
+          echo pom.xml.versionsBackup >> .git/info/exclude
+          git config --global --add safe.directory '*'
+          git fetch --all
 
       - name: Bump version in package.json
         run: | 
