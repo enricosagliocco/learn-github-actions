@@ -20,6 +20,6 @@ jobs:
           git config user.name "GitHub actions"
           git config user.email noreply@github.com
           
-          git tag -a 1.0.0 -m 1.0.0
+          git tag -a 1.0.1 -m 1.0.1
 
           git push origin --tags
