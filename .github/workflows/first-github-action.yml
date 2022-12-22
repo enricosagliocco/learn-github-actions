@@ -15,12 +15,6 @@ jobs:
         run: | 
           git clone $GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git
 
-      - name: Create release branch
-        run: | 
-          cd ${{ github.event.repository.name }}
-          git checkout develop
-          git checkout -b release/${{ github.event.inputs.version }}
-
       - name: Initialize mandatory git config
         run: |
           cd ${{ github.event.repository.name }}
@@ -35,6 +29,12 @@ jobs:
           echo pom.xml.versionsBackup >> .git/info/exclude
           git config --global --add safe.directory '*'
           git fetch --all
+
+      - name: Create release branch
+        run: | 
+          cd ${{ github.event.repository.name }}
+          git checkout develop
+          git checkout -b release/${{ github.event.inputs.version }}
 
       - name: Bump version in package.json
         run: | 
