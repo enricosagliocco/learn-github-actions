@@ -23,6 +23,7 @@ jobs:
 
       - name: Initialize mandatory git config
         run: |
+          cd ${{ github.event.repository.name }}
           git config user.name "GitHub actions"
           git config user.email noreply@github.com
           git config --global credential.helper "/bin/sh ./.git_creds.sh"
