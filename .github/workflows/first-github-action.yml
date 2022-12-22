@@ -29,7 +29,7 @@ jobs:
           git config --global credential.helper "/bin/sh ./.git_creds.sh"
           echo '#!/bin/sh' > ./.git_creds.sh
           echo "sleep 1" >> ./.git_creds.sh
-          echo "echo username=${{ env.GITHUB_ACTOR }}" >> ./.git_creds.sh
+          echo "echo username=${{ github.repository_owner }}" >> ./.git_creds.sh
           echo "echo password=${{ secrets.GITHUB_TOKEN }}" >> ./.git_creds.sh
           echo .git_creds.sh >> .git/info/exclude
           echo pom.xml.versionsBackup >> .git/info/exclude
