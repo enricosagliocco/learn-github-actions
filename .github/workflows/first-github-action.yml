@@ -16,4 +16,9 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "This job's status is ${{ job.status }}."
-      - run: git branch
+      - name: Gitflow on Main
+      - run: git add .
+      - run: git commit -m release-1.0.0
+      - run: git tag -a 1.0.0 -m 1.0.0
+      - run: git push --all
+      - run: git push origin --tags
