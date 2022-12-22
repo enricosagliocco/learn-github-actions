@@ -17,12 +17,13 @@ jobs:
 
       - name: Update Package Version
         run: | 
+          cd ${{ github.event.repository.name }}
           git checkout develop
           yarn version --new-version ${{ github.event.inputs.version }} --no-git-tag-version
 
       - name: Gitflow
         run: |
-        
+
           cd ${{ github.event.repository.name }}
           git config user.name "GitHub actions"
           git config user.email noreply@github.com
